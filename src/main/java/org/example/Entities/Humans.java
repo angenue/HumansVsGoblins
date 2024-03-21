@@ -2,7 +2,7 @@ package main.java.org.example.Entities;
 
 import java.util.Arrays;
 
-public class Humans implements Moveable{
+public class Humans{
     private int x;
     private int y;
 
@@ -11,14 +11,20 @@ public class Humans implements Moveable{
         this.y = 0;
     }
 
-    // Method to move the human
-    public void move(char keyMove) {
-        switch (keyMove) {
-            case 'w' -> this.y -= 1; // Move up (decrease y-coordinate)
-            case 'a' -> this.x -= 1; // Move left (decrease x-coordinate)
-            case 's' -> this.y += 1; // Move down (increase y-coordinate)
-            case 'd' -> this.x += 1; // Move right (increase x-coordinate)
-        }
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     @Override

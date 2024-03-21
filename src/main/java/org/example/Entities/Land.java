@@ -10,6 +10,12 @@ public class Land {
     public Land() {
         this.grid = new String[6][6];
         fillGrid();
+        human = new Humans();
+        goblin = new Goblins();
+        // Place Human at (0, 0)
+        grid[0][0] = "H";
+        // Place Goblin at (5, 5)
+        grid[5][5] = "G";
     }
 
     public String[][] getGrid() {

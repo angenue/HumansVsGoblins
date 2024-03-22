@@ -34,32 +34,31 @@ public class Land {
     }
 
     public void move(char direction) {
+        int prevHumanX = human.getX();
+        int prevHumanY = human.getY();
+        int prevGoblinX = goblin.getX();
+        int prevGoblinY = goblin.getY();
+
+        // Move the entities
         human.move(direction);
         goblin.move(direction);
 
-        moveEntity(human);
-        moveEntity(goblin);
-    }
-
-    public void moveEntity(Moveable entity) {
-        int currentX = entity.getX();
-        int currentY = entity.getY();
-
-
-        if (!isValidPosition(currentX, currentY)) {
+        // Check if the new position for the human is valid
+        if (!isValidPosition(human.getX(), human.getY())) {
             System.out.println("You can't go that way! Try again.");
-            return;
+            // Reset the human's position to the previous position
+            human.setX(prevHumanX);
+            human.setY(prevHumanY);
         }
 
-        if (entity instanceof Humans) {
-            grid[currentX][currentY] = entity.getSymbol();
-        } else if (entity instanceof Goblins) {
-            grid[currentX][currentY] = entity.getSymbol();
-        } else {
-            // Set the symbol for trees
-            grid[currentX][currentY] = "\uD83C\uDF32";
-        }
+        // Update the grid with the new positions
+        grid[prevHumanX][prevHumanY] = "\uD83C\uDF35"; // Clear previous human position
+        grid[prevGoblinX][prevGoblinY] = "\uD83C\uDF35"; // Clear previous goblin position
+        grid[human.getX()][human.getY()] = human.getSymbol(); // Update human's new position
+        grid[goblin.getX()][goblin.getY()] = goblin.getSymbol(); // Update goblin's new position
     }
+
+
     private boolean isValidPosition(int x, int y) {
         return x >= 0 && x < grid.length && y < grid[0].length && y >= 0;
     }

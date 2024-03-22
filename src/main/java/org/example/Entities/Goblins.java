@@ -8,8 +8,8 @@ public class Goblins implements Moveable {
     private int y;
 
     public Goblins() {
-        this.x = 0;
-        this.y = 0;
+        this.x = 5;
+        this.y = 5;
     }
 
 

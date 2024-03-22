@@ -40,10 +40,10 @@ public class Humans implements Moveable{
     @Override
     public void move(char direction) {
         switch (direction) {
-            case 'w' -> this.y -= 1;
-            case 'a' -> this.x -= 1;
-            case 's' -> this.y += 1;
-            case 'd' -> this.x += 1;
+            case 'w' -> this.x -= 1;
+            case 'a' -> this.y -= 1;
+            case 's' -> this.x += 1;
+            case 'd' -> this.y += 1;
         }
     }
 }

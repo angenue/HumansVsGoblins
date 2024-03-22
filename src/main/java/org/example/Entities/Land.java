@@ -56,9 +56,8 @@ public class Land {
         } else if (entity instanceof Goblins) {
             grid[currentX][currentY] = entity.getSymbol();
         } else {
-            // Handle other types of entities (e.g., trees)
             // Set the symbol for trees
-            grid[currentX][currentY] = "\uD83C\uDF32"; // Change to the appropriate tree symbol
+            grid[currentX][currentY] = "\uD83C\uDF32";
         }
     }
     private boolean isValidPosition(int x, int y) {

@@ -1,6 +1,7 @@
 package main.java.org.example.Entities;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Land {
     private String[][] grid;
@@ -39,23 +40,48 @@ public class Land {
         int prevGoblinX = goblin.getX();
         int prevGoblinY = goblin.getY();
 
-        // Move the entities
         human.move(direction);
         goblin.move(direction);
 
-        // Check if the new position for the human is valid
+        // Check if the human and goblin collided
+        if (human.getX() == goblin.getX() && human.getY() == goblin.getY()) {
+            grid[human.getX()][human.getY()] = "\uD83E\uDD4A";
+            grid[prevHumanX][prevHumanY] = "\uD83C\uDF35";
+            grid[prevGoblinX][prevGoblinY] = "\uD83C\uDF35";
+            System.out.println(this);
+            initiateCombat();
+        }
+
         if (!isValidPosition(human.getX(), human.getY())) {
             System.out.println("You can't go that way! Try again.");
-            // Reset the human's position to the previous position
+
             human.setX(prevHumanX);
             human.setY(prevHumanY);
         }
 
-        // Update the grid with the new positions
-        grid[prevHumanX][prevHumanY] = "\uD83C\uDF35"; // Clear previous human position
-        grid[prevGoblinX][prevGoblinY] = "\uD83C\uDF35"; // Clear previous goblin position
-        grid[human.getX()][human.getY()] = human.getSymbol(); // Update human's new position
-        grid[goblin.getX()][goblin.getY()] = goblin.getSymbol(); // Update goblin's new position
+        // Update grid with new icons
+        grid[prevHumanX][prevHumanY] = "\uD83C\uDF35"; // remove old human position
+        grid[prevGoblinX][prevGoblinY] = "\uD83C\uDF35";
+        grid[human.getX()][human.getY()] = human.getSymbol(); // Update new human position
+        grid[goblin.getX()][goblin.getY()] = goblin.getSymbol();
+    }
+
+    private  void initiateCombat() {
+        System.out.println("Combat initiated! \n");
+
+        Random random = new Random();
+        int humanPower = random.nextInt(10) + 1;
+        int goblinPower = random.nextInt(10) + 1;
+
+        if (humanPower > goblinPower) {
+            System.out.println("You won! You defeated the goblin \uD83C\uDF89 \n");
+        } else if (humanPower < goblinPower) {
+            System.out.println("The goblin defeated you, sorry \uD83D\uDE14 \n");
+        } else {
+            System.out.println("It's a tie!\n");
+        }
+
+        System.exit(0); //close program
     }
 
 

@@ -23,6 +23,11 @@ public class Humans implements Moveable{
         return y;
     }
 
+    @Override
+    public String getSymbol() {
+        return "\uD83E\uDD3A";
+    }
+
     public void setY(int y) {
         this.y = y;
     }

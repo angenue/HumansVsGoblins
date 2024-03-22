@@ -12,17 +12,66 @@ public class Goblins implements Moveable {
         this.y = 0;
     }
 
+
+
     // Method to move the human
     @Override
     public void move(char keyMove) {
         Random random = new Random();
-        int direction = random.nextInt(4); // Random direction: 0 = up, 1 = left, 2 = down, 3 = right
-        switch (direction) {
-            case 0 -> this.y -= 1; // Move up
-            case 1 -> this.x -= 1; // Move left
-            case 2 -> this.y += 1; // Move down
-            case 3 -> this.x += 1; // Move right
+        int direction = random.nextInt(4);
+
+        while (true) {
+            switch (direction) {
+                case 0: // Move up
+                    if (y > 0) { // If goblin is not at the top row
+                        y--; // Move up
+                        return;
+                    }
+                    break;
+                case 1: // Move left
+                    if (x > 0) {
+                        x--;
+                        return;
+                    }
+                    break;
+                case 2: // Move down
+                    if (y < 5) { // If goblin is not at the bottom row
+                        y++; // Move down
+                        return;
+                    }
+                    break;
+                case 3: // Move right
+                    if (x < 5) {
+                        x++;
+                        return;
+                    }
+                    break;
+            }
+            // gives new random direction if the current direction would make goblin go out of bounds
+            direction = random.nextInt(4);
         }
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    @Override
+    public String getSymbol() {
+        return "\uD83E\uDDDF";
+
     }
 
     @Override

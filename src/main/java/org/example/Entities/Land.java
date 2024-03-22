@@ -73,6 +73,10 @@ public class Land {
         int humanPower = random.nextInt(10) + 1;
         int goblinPower = random.nextInt(10) + 1;
 
+        System.out.println("Human Strength: " + humanPower);
+        System.out.println("Goblin Strength: " + goblinPower);
+        System.out.println(" ");
+
         if (humanPower > goblinPower) {
             System.out.println("You won! You defeated the goblin \uD83C\uDF89 \n");
         } else if (humanPower < goblinPower) {

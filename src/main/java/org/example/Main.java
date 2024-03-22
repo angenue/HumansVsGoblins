@@ -11,20 +11,26 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println(world); // Print the current state of the land
+            System.out.println(world);
+            System.out.println(" ");
             System.out.println("Enter a WASD key to move or 'q' to quit: ");
-            char direction = scanner.next().charAt(0); // Read a character input
+            char direction = scanner.next().charAt(0);
             direction = Character.toLowerCase(direction);
 
-            if (direction != 'w' && direction != 'a' && direction != 's' && direction != 'd' && direction != 'q') {
+            if (direction == 'q') {
+                System.out.println("Exiting the game. Goodbye!");
+                break;
+            }
+
+            if (direction != 'w' && direction != 'a' && direction != 's' && direction != 'd') {
                 System.out.println("Invalid input. Please enter 'w', 'a', 's', 'd', or 'q' to move or quit.");
                 continue; // Ask the user to try again
             }
 
-
-            // Move the human in the specified direction
+            // Move the human
             world.move(direction);
         }
+        scanner.close();
 
     }
 }

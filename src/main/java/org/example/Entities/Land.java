@@ -29,8 +29,12 @@ public class Land {
 
     private void fillGrid() {
         for (String[] strings : grid) {
-            Arrays.fill(strings, "\uD83C\uDF34");
+            Arrays.fill(strings, "\uD83C\uDF35");
         }
+    }
+
+    private boolean isValidPosition(int x, int y) {
+        return x >= 0 && x < grid.length && y < grid[0].length && y >= 0;
     }
 
     @Override

@@ -29,16 +29,16 @@ public class Humans implements Moveable{
 
     @Override
     public String toString() {
-        return "\uD83E\uDDD1\u200D\uD83C\uDF3E";
+        return "\uD83E\uDD3A";
     }
 
     @Override
     public void move(char direction) {
         switch (direction) {
-            case 'w' -> this.y -= 1; // Move up (decrease y-coordinate)
-            case 'a' -> this.x -= 1; // Move left (decrease x-coordinate)
-            case 's' -> this.y += 1; // Move down (increase y-coordinate)
-            case 'd' -> this.x += 1; // Move right (increase x-coordinate)
+            case 'w' -> this.y -= 1;
+            case 'a' -> this.x -= 1;
+            case 's' -> this.y += 1;
+            case 'd' -> this.x += 1;
         }
     }
 }

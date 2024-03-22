@@ -27,6 +27,6 @@ public class Goblins implements Moveable {
 
     @Override
     public String toString() {
-        return "\uD83E\uDDCC";
+        return "\uD83E\uDDDF";
     }
 }
